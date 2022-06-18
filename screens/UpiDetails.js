@@ -1,30 +1,58 @@
-import React from 'react'
-import {StyleSheet, Text, View, Image, TouchableOpacity,} from 'react-native'
-import {useNavigation} from "@react-navigation/native";
+import React, {useState} from 'react'
+import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput,} from 'react-native'
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-const AddTranscDetail = () => {
-    const navigation = useNavigation()
+const UpiDetails = () => {
+
+    const [id, setid] = useState('')
+
     return (
         <View style={styles.container}>
             <View>
                 <Text style={styles.title}>
-                    Add Transaction Details:
+                    Add UPI Details:
+                </Text>
+            </View>
+            <View>
+                <Text style={styles.subtitle}>
+                    Add UPI scanner(optional)
                 </Text>
             </View>
             <TouchableOpacity style={[styles.card,styles.elevation]}
-                              onPress={() => (navigation.navigate('UpiDetail'))}>
+                              onPress={() => (console.log('pressed'))}>
                 <View style={styles.absoluteView}>
                     <Text>
                         .
                     </Text>
                 </View>
-                <Image source={require('../assets/upiLogo.png')} style={styles.cardImage}/>
+                <MaterialIcons name={'add-a-photo'} color={'grey'} size={80} style={{alignSelf: 'center'}}/>
             </TouchableOpacity>
+            <View>
+                <Text style={styles.subtitle}>
+                    Add UPI ID(required)
+                </Text>
+                <TextInput
+                    placeholder="Example@user.com"
+                    value={id}
+                    onChangeText={text1 => setid(text1)}
+                    style={styles.input}
+                />
+            </View>
+            <View>
+            <TouchableOpacity
+                onPress={() => (console.log('Pressed'))}
+                style={styles.button}
+            >
+                <Text style={styles.buttonText}>Save Details</Text>
+            </TouchableOpacity>
+            </View>
         </View>
     )
 }
 
-export default AddTranscDetail
+export default UpiDetails
 
 const styles = StyleSheet.create({
     container: {
@@ -36,6 +64,7 @@ const styles = StyleSheet.create({
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
+        alignSelf: 'center',
         marginTop: 40,
     },
     absoluteView: {
@@ -67,12 +96,15 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         marginVertical: 10,
         flexDirection: 'row',
+        width: '80%',
+        height: '30%',
         marginLeft: 15,
         marginRight: 15,
         paddingTop: 15,
         paddingBottom: 15,
         alignContent: "center",
         justifyContent: "center",
+        alignSelf: 'center'
     },
     card1: {
         backgroundColor: 'white',
@@ -178,5 +210,21 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         marginLeft: 5,
         marginTop: 6,
-    }
+    },
+    inputContainer: {
+        width: '80%',
+        marginLeft: 35,
+    },
+    input: {
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 5,
+        backgroundColor: 'white',
+        width: '90%',
+        marginVertical: 10,
+        elevation: 20,
+        shadowColor: 'rgba(63,63,63,0.8)',
+        alignSelf: "center",
+    },
 })

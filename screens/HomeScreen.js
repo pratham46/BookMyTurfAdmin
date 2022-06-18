@@ -25,7 +25,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
         <View style={{flexDirection: 'row'}}>
             <TouchableOpacity style={[styles.card1,styles.elevation]}
-                              onPress={() => (console.log('Pressed'))}>
+                              onPress={() => (navigation.navigate('Gallery'))}>
                 <View style={styles.absoluteView}>
                     <Text>
                         .

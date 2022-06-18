@@ -1,30 +1,48 @@
-import React from 'react'
-import {StyleSheet, Text, View, Image, TouchableOpacity,} from 'react-native'
-import {useNavigation} from "@react-navigation/native";
+import React, {useState} from 'react'
+import {StyleSheet,ScrollView, Text, View, Image, TouchableOpacity, TextInput,} from 'react-native'
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-const AddTranscDetail = () => {
-    const navigation = useNavigation()
+const GalleryImage = () => {
+
+    const [id, setid] = useState('')
+
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.title}>
-                    Add Transaction Details:
+                    Gallery
+                </Text>
+            </View>
+            <View style={styles.imageholder}>
+                <Image source={require('../assets/turf1.png')} style={styles.cardImage}/>
+            </View>
+            <View style={styles.imageholder}>
+                <Image source={require('../assets/turf2.png')} style={styles.cardImage}/>
+            </View>
+            <View style={styles.imageholder}>
+                <Image source={require('../assets/turf3.png')} style={styles.cardImage}/>
+            </View>
+            <View>
+                <Text style={styles.subtitle}>
+                    Add more images
                 </Text>
             </View>
             <TouchableOpacity style={[styles.card,styles.elevation]}
-                              onPress={() => (navigation.navigate('UpiDetail'))}>
+                              onPress={() => (console.log('pressed'))}>
                 <View style={styles.absoluteView}>
                     <Text>
                         .
                     </Text>
                 </View>
-                <Image source={require('../assets/upiLogo.png')} style={styles.cardImage}/>
+                <MaterialIcons name={'add-a-photo'} color={'grey'} size={80} style={{alignSelf: 'center'}}/>
             </TouchableOpacity>
-        </View>
+        </ScrollView>
     )
 }
 
-export default AddTranscDetail
+export default GalleryImage
 
 const styles = StyleSheet.create({
     container: {
@@ -36,6 +54,7 @@ const styles = StyleSheet.create({
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
+        alignSelf: 'center',
         marginTop: 40,
     },
     absoluteView: {
@@ -44,10 +63,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'transparent'
-    },
-    cardImage: {
-        height: 80,
-        width: 230,
     },
     buttonText: {
         color: 'white',
@@ -67,20 +82,36 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         marginVertical: 10,
         flexDirection: 'row',
+        width: 350,
+        height: 250,
         marginLeft: 15,
         marginRight: 15,
         paddingTop: 15,
         paddingBottom: 15,
         alignContent: "center",
         justifyContent: "center",
+        alignSelf: 'center'
     },
-    card1: {
+    imageholder: {
         backgroundColor: 'white',
         borderRadius: 8,
         marginVertical: 10,
         flexDirection: 'row',
+        width: 350,
+        height: 250,
         marginLeft: 15,
-        marginRight: 28,
+        marginRight: 15,
+        padding: 2,
+        alignContent: "center",
+        justifyContent: "center",
+        alignSelf: 'center',
+        elevation: 20,
+        shadowColor: 'grey'
+    },
+    cardImage: {
+        height: 246,
+        width: 346,
+        borderRadius: 8
     },
     listtitle: {
         fontSize: 25 ,
@@ -178,5 +209,21 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         marginLeft: 5,
         marginTop: 6,
-    }
+    },
+    inputContainer: {
+        width: '80%',
+        marginLeft: 35,
+    },
+    input: {
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 5,
+        backgroundColor: 'white',
+        width: '90%',
+        marginVertical: 10,
+        elevation: 20,
+        shadowColor: 'rgba(63,63,63,0.8)',
+        alignSelf: "center",
+    },
 })
