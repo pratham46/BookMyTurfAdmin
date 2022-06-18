@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Avatar, Title, Caption, Drawer} from 'react-native-paper';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {DrawerContent, DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { auth } from '../../BookMyTurfAdmin/firebase';
@@ -55,6 +54,17 @@ export function DrawerContent1(props) {
                             labelStyle={styles.label}
                             onPress={() => {
                                 props.navigation.navigate('YourInfo');
+                            }}
+                            style={styles.DrawerItemS}
+                        />
+                        <DrawerItem
+                            icon={({color, size,}) => (
+                                <FontAwesome5 name="user-alt" color={"#212121"} size={size} style={{marginLeft: -3,}}/>
+                            )}
+                            label="Admin Details"
+                            labelStyle={styles.label}
+                            onPress={() => {
+                                props.navigation.navigate('AdminDetails');
                             }}
                             style={styles.DrawerItemS}
                         />

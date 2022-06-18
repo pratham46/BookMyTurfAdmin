@@ -6,6 +6,7 @@ import {DrawerContent1} from "./DrawerContent";
 import HomeScreen from "./HomeScreen";
 import AdminForm from "./AdminData";
 import Route from "./Routes";
+import AdminDetailsScreen from "./AdminDetailsScreen";
 
 
 const Drawer = createDrawerNavigator();
@@ -27,6 +28,15 @@ export default function DrawerNav() {
                 <Drawer.Screen
                     name="YourInfo"
                     component={AdminForm}
+                    options={{
+                        headerTintColor: '#298a3d',
+                        headerTitleStyle: {
+                            fontWeight: 'bold',
+                        },
+                    }} />
+                <Drawer.Screen
+                    name="AdminDetails"
+                    component={AdminDetailsScreen}
                     options={{
                         headerTintColor: '#298a3d',
                         headerTitleStyle: {

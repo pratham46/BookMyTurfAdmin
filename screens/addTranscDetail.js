@@ -7,7 +7,7 @@ const AddTranscDetail = () => {
         <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.title}>
-                    Slots Booked:
+                    Add Transaction Details:
                 </Text>
             </View>
         </ScrollView>
