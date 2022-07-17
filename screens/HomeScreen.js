@@ -13,7 +13,7 @@ const HomeScreen = () => {
     };
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
         <TouchableOpacity style={[styles.card,styles.elevation]}
                           onPress={() => (navigation.navigate('TurfSet'))}>
             <View style={styles.absoluteView}>
@@ -80,7 +80,7 @@ const HomeScreen = () => {
             </View>
             <Image source={require('../assets/Transac_Booking.jpeg')} style={styles.cardImage}/>
         </TouchableOpacity>
-    </ScrollView>
+    </View>
   )
 }
 
@@ -89,19 +89,6 @@ export default HomeScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-   button: {
-    backgroundColor: '#0782F9',
-    width: '60%',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 40,
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: '700',
-    fontSize: 16,
   },
     heading: {
         fontSize: 30,
@@ -128,6 +115,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginLeft: 15,
         marginRight: 15,
+        width: 350,
     },
     card1: {
         backgroundColor: 'white',
@@ -135,7 +123,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         flexDirection: 'row',
         marginLeft: 15,
-        marginRight: 28,
+        marginRight: 15,
     },
     elevation: {
         elevation: 20,
@@ -153,7 +141,7 @@ const styles = StyleSheet.create({
     },
     cardImage: {
         height: 150,
-        width: 363,
+        width: '100%',
         borderRadius: 10
     },
     cardImage1: {

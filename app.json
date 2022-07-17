@@ -4,10 +4,10 @@
     "slug": "BookMyTurfAdmin",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/user.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Capture4-removebg-preview.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,9 +22,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/user.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.pratham56.BookMyTurfAdmin"
     },
     "web": {
       "favicon": "./assets/favicon.png"
