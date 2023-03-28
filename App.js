@@ -11,7 +11,7 @@ import DrawerNav from "./screens/DrawerNav";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
+        return (
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />

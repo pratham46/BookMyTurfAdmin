@@ -1,15 +1,31 @@
 import React, {useState} from 'react'
-import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput,} from 'react-native'
+import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ScrollView,} from 'react-native'
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import * as ImagePicker from "expo-image-picker";
 
 const UpiDetails = () => {
 
     const [id, setid] = useState('')
+    const [image, setImage] = useState(null);
 
+    const pickImage = async () => {
+// No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.title}>
                     Add UPI Details:
@@ -20,8 +36,12 @@ const UpiDetails = () => {
                     Add UPI scanner(optional)
                 </Text>
             </View>
+            <View style={styles.imageholder}>
+
+                {image && <Image source={{ uri: image }} style={styles.cardImage} />}
+            </View>
             <TouchableOpacity style={[styles.card,styles.elevation]}
-                              onPress={() => (console.log('pressed'))}>
+                              onPress={() => pickImage()}>
                 <View style={styles.absoluteView}>
                     <Text>
                         .
@@ -48,7 +68,7 @@ const UpiDetails = () => {
                 <Text style={styles.buttonText}>Save Details</Text>
             </TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
@@ -57,6 +77,7 @@ export default UpiDetails
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+
     },
     button: {
         backgroundColor: '#0782F9',
@@ -66,6 +87,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         marginTop: 40,
+        marginBottom: 20,
     },
     absoluteView: {
         flex: 1,
@@ -75,8 +97,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     cardImage: {
-        height: 80,
-        width: 230,
+        height: 300,
+        width: 300,
+        alignSelf: "center",
     },
     buttonText: {
         color: 'white',
@@ -194,6 +217,8 @@ const styles = StyleSheet.create({
     elevation: {
         elevation: 20,
         shadowColor: '#52006A',
+        height: 150,
+        width: 300,
     },
     title: {
         fontSize: 30,

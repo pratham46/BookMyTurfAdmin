@@ -1,14 +1,29 @@
-import React, {useState} from 'react'
+import React, {useState , useEffect} from 'react'
 import {StyleSheet,ScrollView, Text, View, Image, TouchableOpacity, TextInput,} from 'react-native'
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import * as ImagePicker from 'expo-image-picker';
 
 const GalleryImage = () => {
 
     const [id, setid] = useState('')
+    const [image, setImage] = useState(null);
 
+    const pickImage = async () => {
+// No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [16, 9],
+            quality: 1,
+        });
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
     return (
+
         <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.title}>
@@ -24,13 +39,18 @@ const GalleryImage = () => {
             <View style={styles.imageholder}>
                 <Image source={require('../assets/turf3.png')} style={styles.cardImage}/>
             </View>
-            <View>
+
+            <View style={styles.imageholder}>
+
+                {image && <Image source={{ uri: image }} style={styles.cardImage} />}
+            </View>
+                    <View>
                 <Text style={styles.subtitle}>
                     Add more images
                 </Text>
             </View>
             <TouchableOpacity style={[styles.card,styles.elevation]}
-                              onPress={() => (console.log('pressed'))}>
+                              onPress={() => pickImage()}>
                 <View style={styles.absoluteView}>
                     <Text>
                         .
